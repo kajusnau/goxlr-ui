@@ -718,6 +718,12 @@ export default {
                 lockFaders: "Lock fader positions when Muting to All",
                 lockFadersAccessibility: "Prevents the faders from moving down when Mute to All is active",
 
+                lightingOffOnSleep: "Turn off lighting on sleep",
+                lightingOffOnSleepAccessibility: "Turns off all the device lighting while the computer is asleep",
+
+                lightingOffOnShutdown: "Turn off lighting when the Utility stops",
+                lightingOffOnShutdownAccessibility: "Turns off all the device lighting when the Utility stops, including when the computer shuts down",
+
                 samplerFadeDuration: "Sampler Fade Duration",
                 samplerFadeDurationAccessibility: "The duration in milliseconds that the sampler will fade out when playback is stopped",
             },

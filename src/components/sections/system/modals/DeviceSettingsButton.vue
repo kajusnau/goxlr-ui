@@ -46,6 +46,12 @@
         <BooleanSetting v-if="!isDeviceMini()" :label="$t('message.system.device.lockFaders')"
                         :enabled="get_locked_faders()" @change="set_locked_faders"
                         :description="$t('message.system.device.lockFadersAccessibility')"/>
+        <BooleanSetting :label="$t('message.system.device.lightingOffOnSleep')"
+                        :enabled="get_lighting_off_on_sleep()" @change="set_lighting_off_on_sleep"
+                        :description="$t('message.system.device.lightingOffOnSleepAccessibility')"/>
+        <BooleanSetting :label="$t('message.system.device.lightingOffOnShutdown')"
+                        :enabled="get_lighting_off_on_shutdown()" @change="set_lighting_off_on_shutdown"
+                        :description="$t('message.system.device.lightingOffOnShutdownAccessibility')"/>
 
       </div>
 
@@ -157,6 +163,28 @@ export default {
 
     set_locked_faders(value) {
       websocket.send_command(store.getActiveSerial(), {"SetLockFaders": value});
+    },
+
+    get_lighting_off_on_sleep() {
+      if (!store.getActiveDevice()) {
+        return false;
+      }
+      return store.getActiveDevice().settings.lighting_off_on_sleep;
+    },
+
+    set_lighting_off_on_sleep(value) {
+      websocket.send_command(store.getActiveSerial(), {"SetLightingOffOnSleep": value});
+    },
+
+    get_lighting_off_on_shutdown() {
+      if (!store.getActiveDevice()) {
+        return false;
+      }
+      return store.getActiveDevice().settings.lighting_off_on_shutdown;
+    },
+
+    set_lighting_off_on_shutdown(value) {
+      websocket.send_command(store.getActiveSerial(), {"SetLightingOffOnShutdown": value});
     },
 
     getVodModeKeys() {
